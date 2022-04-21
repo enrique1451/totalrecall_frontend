@@ -1,0 +1,14 @@
+.App {
+  text-align: left;
+  min-width: 100vw;
+}
+
+.login-form {
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+/* .btn btn-primary{
+  padd
+} */

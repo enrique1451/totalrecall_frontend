@@ -21,3 +21,11 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#files
+/src/Components/CarGarage/xxDropdown.jsx
+/src/Components/CarGarage/xxGarage.jsx
+/src/webAPIs/ApiClient.jsx
+/src/hooks/WebAPICalls.jsx
+/totalrecall_backend/node_modules
+/totalrecall_backend/seed.py
