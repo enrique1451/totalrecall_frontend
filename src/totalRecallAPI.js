@@ -14,6 +14,9 @@ class TotalRecallApi {
     try {
       return (await axios({
         method: action,
+        headers: {
+          authorization: `${ parOrData._token }`
+        }, 
         url: `${API_URL}${endpoint}`,
         [action === "get" ? "params" : "data"]: parOrData, 
       })).data;
@@ -21,6 +24,7 @@ class TotalRecallApi {
     } catch (err) {
       console.error("API Error:", err.response);
       let message = err?.response?.data?.message;
+      console.debug(err, message)
       throw Array.isArray(message) ? message : [message];
     }
     
@@ -51,21 +55,20 @@ class TotalRecallApi {
 
   static async getUser(username) {
     console.log("Current User", username)
-    const res = await this.request(`users/${username}`);
-    console.log("check user credentials", res);
+    const res = await this.request(`/users/${username}`);
     return res.user;
   }
 
   static async addNewCar(newCarData, username) {
     console.debug(" Car Data------> ", newCarData)
 
-    const res = await this.request(`/cars/${username}/garage`, newCarData, "post")
+    const res = await this.request(`/cars/garage`, newCarData, "post")
     console.log("Car Data", res);
     return res.user;
   }
 
-  static async getUserGarage(username) {
-    const res = await this.request(`/cars/${username}/garage/showcars`) 
+  static async getUserGarage() {
+    const res = await this.request(`/cars/garage/showcars`) 
     return res.cars
       
     }

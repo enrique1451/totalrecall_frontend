@@ -8,8 +8,8 @@ import Login from "./Components/Login/Login";
 import UserContext from "./Components/UserContext";
 import TotalRecallApi from "./totalRecallAPI";
 import Navigation from "./Components/Navigation/Navigation";
-import NewCarForm from "./Components/CarGarage/NewCarForm"
-import CarCard from "./Components/CarGarage/CarCard";
+import NewCarForm from "./Components/CarGarage/NewCarForm";
+import Car from "./Components/CarGarage/Car";
 
 
 
@@ -95,7 +95,7 @@ const Routes = ()=> {
                 {loggedIn ? <NewCarForm handleNewCar = { handleNewCar }/>:<Redirect to="/login" />}                
             </Route>
             <Route exact path="/garage/showcars">
-                {loggedIn ? <CarCard  getCurrentUserCars = { getCurrentUserCars }/>:<Redirect to="/login" />}                
+                {loggedIn ? <Car getCurrentUserCars = { getCurrentUserCars }/>:<Redirect to="/login" />}                
             </Route>
         </Switch> 
         </BrowserRouter>

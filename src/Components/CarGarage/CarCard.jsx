@@ -1,35 +1,22 @@
-import React, { useEffect, useState, useRef } from "react";
+import React from "react";
 import {CardTitle, CardText, Card, Container} from "reactstrap"
-import TotalRecallApi from "../../totalRecallAPI";
-// import useLocalStorage from "../../hooks/UseLocalStorage";
-
-function CarCard() {
-  const [carsData, setCarsData] = useState([]); 
 
 
-  useEffect(() => {
-    const fetchData = async (username) => {
-     
-      const resp = await TotalRecallApi.getUserGarage(username)
-      console.log(resp)
-      const cars = resp.json()
-      setCarsData(cars)
-    };
-    fetchData()
-}, []);
+
+function CarCard(props) {
+  const { id, yearmodel, carmake, carmodel, recalls}  = props.car
+
 
   return (
-
+    
     <Container>
       <Card body inverse style = {{backgroundColor: '#333', borderColor: '#333'}}>
-        <CardTitle tag="h5">
-          {carsData.modelyear}  {carsData.carmake}  {carsData.carmodel}
+        <CardTitle tag="h5" key={id}>
+          {yearmodel} { carmake }  { carmodel }
         </CardTitle>
         <CardText>
-          To be filled with recalls and solutions....tbd
-          
+          { recalls }
         </CardText>
-        
       </Card>
       <Card body color="primary" inverse />
     </Container>
