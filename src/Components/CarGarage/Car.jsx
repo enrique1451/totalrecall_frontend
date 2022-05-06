@@ -1,36 +1,47 @@
-import React, { useEffect, useState, useRef } from "react";
-import {CardTitle, CardText, Card, Container} from "reactstrap"
+import React, { useEffect, useState } from "react";
+import { CardGroup } from "reactstrap";
 import CarCard from "./CarCard";
 import TotalRecallApi from "../../totalRecallAPI";
-// import useLocalStorage from "../../hooks/UseLocalStorage";
+
+
 
 function Car() {
   const [carsData, setCarsData] = useState([]);
+  const [carsRecallData, setCarsRecallData] = useState([]);
+
+  // const recallURL = `http://localhost:3001/cars/recalls/recallsByVehicle?modelYear=${car.yearmodel}&make=${car.carmake}&model=${car.carmodel}`
   
 
 
   useEffect(() => {
     const getCars = async () => {
-      const carsResponse = await TotalRecallApi.getUserGarage()
-      console.log("CARS ARRAY", carsResponse)
+
+      // Request to backend to provide cars owned by current user
+      const carsResponse = await TotalRecallApi.getUserCars();
+      console.log("CARS ARRAY IN Car.jsx Component", carsResponse)
+      const recallsResponse =  await TotalRecallApi.getCarsRecalls(carsResponse)
+
       setCarsData(carsResponse)
-    };
+      setCarsRecallData(recallsResponse)
+    }
     getCars()
+    
   }, []);
-
- const cars = carsData.map(car => <CarCard car={car} key={car.id} />)
-
   
+  let id = 0;
+  const cars = carsData.map(car => <CarCard car={car} key={id++}  />)
+
 
 
 
   return (
 
     <div className = "User-cars">
-      {cars}
+      <CardGroup>
+            {cars}
+      </CardGroup>
     </div>
       );
     }
+  export default Car;
 
-
-export default Car;

@@ -1,27 +1,33 @@
 import React from "react";
-import {CardTitle, CardText, Card, Container} from "reactstrap"
+
+import {CardTitle, CardText, Card,  CardImg, CardBody, CardSubtitle, Button} from "reactstrap"
 
 
 
-function CarCard(props) {
-  const { id, yearmodel, carmake, carmodel, recalls}  = props.car
+function CarCard({car}) {
+
 
 
   return (
-    
-    <Container>
-      <Card body inverse style = {{backgroundColor: '#333', borderColor: '#333'}}>
-        <CardTitle tag="h5" key={id}>
-          {yearmodel} { carmake }  { carmodel }
-        </CardTitle>
-        <CardText>
-          { recalls }
-        </CardText>
-      </Card>
-      <Card body color="primary" inverse />
-    </Container>
-      );
-    }
+        <Card key={car.car_id}>
+          <CardImg alt="Card image cap" src="https://picsum.photos/318/180" top width="100%" />
+          <CardBody>
+            <CardTitle tag="h5">
+              {car.yearmodel}
+            </CardTitle>
+            <CardSubtitle className="mb-2 text-muted" tag="h6">
+              { car.carmake } { car.carmodel }
+            </CardSubtitle>
+            <CardText>
+              {car.recalls}
+            </CardText>
+            <Button>
+              Button
+            </Button>
+          </CardBody>
+        </Card>
 
 
+);
+}
 export default CarCard;

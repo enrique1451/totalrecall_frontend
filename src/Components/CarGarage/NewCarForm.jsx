@@ -1,7 +1,6 @@
 import "./NewCarForm.css"
 import React, { useState } from 'react';
 import {Form, Row, FormGroup, Label, Button, Input, Col} from "reactstrap"
-import CarCard from "./CarCard";
 
 function NewCarForm({ handleNewCar }) {
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
-import jwt_decode from "jwt-decode";
+import jwtDecode from "jwt-decode";
 
 
 import Register from './Components/RegisterPage/Register';
@@ -26,18 +26,17 @@ const Routes = ()=> {
     }, [loggedIn]);
 
 
-    const checkToken = ()=> {
+    const checkToken = () => {
         let token = localStorage.getItem("_token");
         setLoggedIn(token ? true: false);
-        console.log(loggedIn)
-        return token
+        return token;
 
     }
 
 
     async function getCurrentUser() {
-        let token = checkToken();
-        let jwt = jwt_decode(token);
+        let token = checkToken()
+        let jwt = jwtDecode(token);
         let currentUser = await TotalRecallApi.getUser(jwt.username);
         console.debug(currentUser)
         updateUser(currentUser)
@@ -70,34 +69,40 @@ const Routes = ()=> {
     }
 
     async function getCurrentUserCars()  {
-        let token = localStorage.getItem("_token")
-        let jwt = jwt_decode(token)
+        let token = checkToken()
+        let jwt = jwtDecode(token)
         let username = jwt.username
+        console.log(username)
         
-        await TotalRecallApi.getUserGarage(username)
+        await TotalRecallApi.getUserCars(username)
     }
     
     
     return(
         <BrowserRouter>
-        <Navigation />
-        <Switch>
-            <Route exact path="/">
-                <Redirect to="/register" />
-            </Route>
-            <Route exact path = "/register">
+
+            <Navigation loggedIn = {loggedIn} handleLogout={handleLogout}/>
+            <Switch>
+                <Route exact path="/">
+                    <Redirect to="/register" />
+                </Route>
+
+                <Route exact path = "/register">
                     {!loggedIn ? <Register handleRegistration = {handleRegistration} /> : <Redirect to="/garage"/> }
-            </Route>
-            <Route exact path="/login">
-              {!loggedIn ?  <Login handleLogin = {handleLogin} handleLogout = {handleLogout} /> : <Redirect to="/garage/showcars" />}
-            </Route>
-            <Route exact path="/garage">
-                {loggedIn ? <NewCarForm handleNewCar = { handleNewCar }/>:<Redirect to="/login" />}                
-            </Route>
-            <Route exact path="/garage/showcars">
-                {loggedIn ? <Car getCurrentUserCars = { getCurrentUserCars }/>:<Redirect to="/login" />}                
-            </Route>
-        </Switch> 
+                </Route>
+
+                <Route exact path="/login">
+                    {!loggedIn ?  <Login handleLogin = {handleLogin} handleLogout = {handleLogout} /> : <Redirect to="/garage" />}
+                </Route>
+
+                <Route exact path="/garage">
+                    {loggedIn ? <NewCarForm handleNewCar = { handleNewCar }/>:<Redirect to="/login"/>}                
+                </Route>
+
+                <Route exact path="/garage/showcars">
+                    {<Car getCurrentUserCars = { getCurrentUserCars }/>}                
+                </Route>
+            </Switch> 
         </BrowserRouter>
     )
 }
