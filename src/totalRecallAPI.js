@@ -9,7 +9,10 @@ class TotalRecallApi {
 
   static async request(endpoint, parOrData = {}, action = "get") {
     parOrData._token = localStorage.getItem("_token");
-    console.debug("API Call:", endpoint, parOrData, action);
+    console.debug("API Call: Endpoint:", endpoint);
+    console.debug("endpoint", endpoint)
+    console.debug('parOrData', parOrData)
+    console.debug("method", action)
 
     if (endpoint !== "/recalls/recallsByVehicle/") {
       try {
@@ -35,13 +38,14 @@ class TotalRecallApi {
         method: 'get',
         url: `${API_URL}${endpoint}`,
         query: parOrData })).data;
-
+        
       } catch (err) {
           console.error("API Error:", err.response);
           let message = err?.response?.data?.message;
           console.debug(err, message)
           throw Array.isArray(message) ? message : [message];
         } 
+         
       }
   }
 
@@ -82,19 +86,20 @@ class TotalRecallApi {
  
   static async getUserCars() {
     const res = await this.request(`/cars/garage/showcars`) 
-    this.getCarsRecalls()
+    // this.getCarsRecalls()
     return res.cars
   }
 
-  static async getCarsRecalls(carsData) {
-    console.log("totalRecallApi getCarsRecalls", carsData)
-    
-    const res = await this.request("cars/recalls/recallsByVehicle/", carsData, "get");
-    
-    
-    return res.recalls
-  }
+  // static async getCarsRecalls(carsData) {
+  //   const res = await this.request("cars/recalls/recallsByVehicle/", carsData, "get");
+
+  //   return res.recalls
+  // }
 
 }
 
+
+
 export default TotalRecallApi;
+
+

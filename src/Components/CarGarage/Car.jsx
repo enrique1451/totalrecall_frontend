@@ -7,7 +7,7 @@ import TotalRecallApi from "../../totalRecallAPI";
 
 function Car() {
   const [carsData, setCarsData] = useState([]);
-  const [carsRecallData, setCarsRecallData] = useState([]);
+  // const [carsRecallData, setCarsRecallData] = useState([]);
 
   // const recallURL = `http://localhost:3001/cars/recalls/recallsByVehicle?modelYear=${car.yearmodel}&make=${car.carmake}&model=${car.carmodel}`
   
@@ -19,10 +19,11 @@ function Car() {
       // Request to backend to provide cars owned by current user
       const carsResponse = await TotalRecallApi.getUserCars();
       console.log("CARS ARRAY IN Car.jsx Component", carsResponse)
-      const recallsResponse =  await TotalRecallApi.getCarsRecalls(carsResponse)
+      // const recallsResponse =  await TotalRecallApi.getCarsRecalls(carsResponse)
+      // console.log("Recalls IN Car.jsx Component", carsResponse)
 
       setCarsData(carsResponse)
-      setCarsRecallData(recallsResponse)
+      // setCarsRecallData(recallsResponse)
     }
     getCars()
     
