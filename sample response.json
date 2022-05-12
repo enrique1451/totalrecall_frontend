@@ -1,0 +1,151 @@
+{
+    "data": {
+        "Count": 7,
+        "Message": "Results returned successfully",
+        "results": [
+            {
+                "Manufacturer": "Tesla, Inc.",
+                "NHTSACampaignNumber": "22V037000",
+                "parkIt": false,
+                "parkOutSide": false,
+                "ReportReceivedDate": "27/01/2022",
+                "Component": "ELECTRICAL SYSTEM:ADAS:AUTONOMOUS/SELF DRIVING:SOFTWARE",
+                "Summary": "Tesla, Inc. (Tesla) is recalling certain 2016-2022 Model S and Model X, 2017-2022 Model 3, and 2020-2022 Model Y vehicles.  The \"rolling stop\" functionality available as part of the Full Self-Driving (Beta) software may allow the vehicle to travel through an all-way stop intersection without first coming to a stop.",
+                "Consequence": "Failing to stop at a stop sign can increase the risk of a crash.",
+                "Remedy": "Tesla will perform an over-the-air (OTA) software update that disables the \"rolling stop\" functionality, free of charge.  Owner notification letters were mailed March 28, 2022.  Owners may contact Tesla customer service at 1-877-798-3752.  Tesla's number for this recall is SB-22-00-001.",
+                "Notes": "Owners may also contact the National Highway Traffic Safety Administration Vehicle Safety Hotline at 1-888-327-4236 (TTY 1-800-424-9153), or go to www.nhtsa.gov.",
+                "ModelYear": "2022",
+                "Make": "TESLA",
+                "Model": "MODEL 3"
+            },
+            {
+                "Manufacturer": "Tesla, Inc.",
+                "NHTSACampaignNumber": "22V045000",
+                "parkIt": false,
+                "parkOutSide": false,
+                "ReportReceivedDate": "01/02/2022",
+                "Component": "ELECTRICAL SYSTEM:SOFTWARE",
+                "Summary": "Tesla, Inc. (Tesla) is recalling certain 2021-2022 Model S and Model X, 2017-2022 Model 3, and 2020-2022 Model Y vehicles.  The audible chime may not activate when the vehicle starts and the driver has not buckled their seat belt.  As such, these vehicles fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 208, \"Occupant Crash Protection.\"",
+                "Consequence": "The driver may be unaware that their seat belt is not fastened, increasing the risk of injury during a crash.",
+                "Remedy": "Tesla will perform an over-the-air (OTA) software update, free of charge.  Owner notification letters were mailed April 1, 2022.  Owners may contact Tesla customer service at 1-877-798-3752.  Tesla's number for this recall is SB-22-00-002.",
+                "Notes": "Owners may also contact the National Highway Traffic Safety Administration Vehicle Safety Hotline at 1-888-327-4236 (TTY 1-800-424-9153), or go to www.nhtsa.gov.",
+                "ModelYear": "2022",
+                "Make": "TESLA",
+                "Model": "MODEL 3"
+            },
+            {
+                "Manufacturer": "Tesla, Inc.",
+                "NHTSACampaignNumber": "22V050000",
+                "parkIt": false,
+                "parkOutSide": false,
+                "ReportReceivedDate": "02/02/2022",
+                "Component": "ELECTRICAL SYSTEM:SOFTWARE",
+                "Summary": "Tesla, Inc. (Tesla) is recalling certain 2021-2022 Model 3, Model S, Model X, and 2020-2022 Model Y vehicles.  A software error may cause a valve in the heat pump to open unintentionally and trap the refrigerant inside the evaporator, resulting in decreased defrosting performance.  As such, these vehicles fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 103, \"Windshield Defrosting and Defogging Systems.\"",
+                "Consequence": "Decreased defrosting performance may reduce the driver's visibility, increasing the risk of a crash.",
+                "Remedy": "Tesla will perform an over-the-air (OTA) software update, free of charge.  Owner notification letters were mailed April 1, 2022.  Owners may contact Tesla customer service at 1-877-798-3752.  Tesla's number for this recall is SB-22-18-002.",
+                "Notes": "Owners may also contact the National Highway Traffic Safety Administration Vehicle Safety Hotline at 1-888-327-4236 (TTY 1-800-424-9153), or go to www.nhtsa.gov.",
+                "ModelYear": "2022",
+                "Make": "TESLA",
+                "Model": "MODEL 3"
+            },
+            {
+                "Manufacturer": "Tesla, Inc.",
+                "NHTSACampaignNumber": "22V063000",
+                "parkIt": false,
+                "parkOutSide": false,
+                "ReportReceivedDate": "04/02/2022",
+                "Component": "ELECTRICAL SYSTEM:SOFTWARE",
+                "Summary": "Tesla, Inc. (Tesla) is recalling certain 2020-2022 Model S, Model X, Model Y, and 2017-2022 Model 3 vehicles.  The Boombox function allows sounds to be played through an external speaker while the vehicle is in motion, which may obscure the Pedestrian Warning System (PWS) sounds.  As such, these vehicles fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 141, \"Minimum Sound Requirements for Hybrid and Electric Vehicles.\"",
+                "Consequence": "Pedestrians may be unaware of an approaching vehicle if the PWS sounds are obscured, increasing the risk of a crash.",
+                "Remedy": "Tesla will perform an over-the-air (OTA) software update that will disable the Boombox functionality when the vehicle is in Drive, Neutral and Reverse modes, free of charge.  Owner notification letters are expected to be mailed April 5, 2022.  Owners may contact Tesla customer service at 1-877-798-3752.  Tesla's number for this recall is SB-22-00-003. \r\n\r\nNote: This recall has been superseded by Recall 22V-235.  Tesla's number for the new recall is SB-22-00-003.",
+                "Notes": "Owners may also contact the National Highway Traffic Safety Administration Vehicle Safety Hotline at 1-888-327-4236 (TTY 1-800-424-9153), or go to www.nhtsa.gov.",
+                "ModelYear": "2022",
+                "Make": "TESLA",
+                "Model": "MODEL 3"
+            },
+            {
+                "Manufacturer": "Tesla, Inc.",
+                "NHTSACampaignNumber": "22V235000",
+                "parkIt": false,
+                "parkOutSide": false,
+                "ReportReceivedDate": "12/04/2022",
+                "Component": "ELECTRICAL SYSTEM:SOFTWARE",
+                "Summary": "Tesla, Inc. (Tesla) is recalling certain 2020-2022 Model Y, Model X, Model S, and 2017-2022 Model 3 vehicles.  The Boombox function allows sounds to be played through an external speaker while the vehicle is in motion, which may obscure the Pedestrian Warning System (PWS) sounds.  As such, these vehicles fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 141, \"Minimum Sound Requirements for Hybrid and Electric Vehicles.\"",
+                "Consequence": "Pedestrians may be unaware of an approaching vehicle if the PWS sounds are obscured, increasing the risk of a crash.",
+                "Remedy": "Tesla will perform an over-the-air (OTA) software update that will disable the Boombox functionality when the vehicle is in Drive, Neutral and Reverse modes, including Summon and Smart Summon, free of charge.  Owner notification letters are expected to be mailed June 6, 2022.  Owners may contact Tesla customer service at 1-877-798-3752.  Tesla's number for this recall is SB-22-00-003.  Note: This recall supersedes recall 22V-063.  Vehicles configured with Summon or Smart Summon and already remedied under 22V-063 will need to have the new remedy software installed.",
+                "Notes": "Owners may also contact the National Highway Traffic Safety Administration Vehicle Safety Hotline at 1-888-327-4236 (TTY 1-800-424-9153), or go to www.nhtsa.gov.",
+                "ModelYear": "2022",
+                "Make": "TESLA",
+                "Model": "MODEL 3"
+            },
+            {
+                "Manufacturer": "Tesla, Inc.",
+                "NHTSACampaignNumber": "22V263000",
+                "parkIt": false,
+                "parkOutSide": false,
+                "ReportReceivedDate": "18/04/2022",
+                "Component": "ELECTRICAL SYSTEM: INSTRUMENT CLUSTER/PANEL",
+                "Summary": "Tesla, Inc. (Tesla) is recalling certain 2018-2022 Model 3 Performance vehicles.  The unit of speed (mph or km/h) may fail to display on the speedometer while in Track Mode.  As such, these vehicles fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 101, \"Control and Displays.\"",
+                "Consequence": "The driver may not know how fast the vehicle is traveling without the mph or km/h unit display, increasing the risk of a crash.",
+                "Remedy": "Tesla will perform an over-the-air (OTA) software update, free of charge.  Owner notification letters are expected to be mailed June 6, 2022.  Owners may contact Tesla customer service at 1-877-798-3752.  Tesla's number for this recall is SB-22-00-008.",
+                "Notes": "Owners may also contact the National Highway Traffic Safety Administration Vehicle Safety Hotline at 1-888-327-4236 (TTY 1-800-424-9153), or go to www.nhtsa.gov.",
+                "ModelYear": "2022",
+                "Make": "TESLA",
+                "Model": "MODEL 3"
+            },
+            {
+                "Manufacturer": "Tesla, Inc.",
+                "NHTSACampaignNumber": "22V296000",
+                "parkIt": false,
+                "parkOutSide": false,
+                "ReportReceivedDate": "03/05/2022",
+                "Component": "BACK OVER PREVENTION:DISPLAY FUNCTION",
+                "Summary": "Tesla, Inc. (Tesla) is recalling certain 2021-2022 Model S, Model X, and 2022 Model 3 and Model Y vehicles operating certain firmware releases.  The infotainment central processing unit (CPU) may overheat during the preparation or process of fast-charging, causing the CPU to lag or restart.",
+                "Consequence": "A lagging or restarting CPU may prevent the center screen from displaying the rearview camera image, gear selection, windshield visibility control settings, and warning lights, increasing the risk of a crash.",
+                "Remedy": "Tesla will perform an over-the-air (OTA) software update that will improve CPU temperature management, free of charge.  Owner notification letters are expected to be mailed July 1, 2022.  Owners may contact Tesla customer service at 1-877-798-3752.  Tesla's number for this recall is SB-22-00-009.",
+                "Notes": "Owners may also contact the National Highway Traffic Safety Administration Vehicle Safety Hotline at 1-888-327-4236 (TTY 1-800-424-9153), or go to www.nhtsa.gov.",
+                "ModelYear": "2022",
+                "Make": "TESLA",
+                "Model": "MODEL 3"
+            }
+        ]
+    },
+    "status": 200,
+    "statusText": "OK",
+    "headers": {
+        "cache-control": "max-age=0, no-cache, no-store",
+        "content-length": "2012",
+        "content-type": "application/json",
+        "expires": "Wed, 11 May 2022 19:45:54 GMT",
+        "pragma": "no-cache"
+    },
+    "config": {
+        "transitional": {
+            "silentJSONParsing": true,
+            "forcedJSONParsing": true,
+            "clarifyTimeoutError": false
+        },
+        "transformRequest": [
+            null
+        ],
+        "transformResponse": [
+            null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1,
+        "headers": {
+            "Accept": "application/json, text/plain, */*"
+        },
+        "params": {
+            "modelYear": 2022,
+            "make": "Tesla",
+            "model": "Model 3"
+        },
+        "method": "get",
+        "url": "http://localhost:3001/recalls/recallsByVehicle/"
+    },
+    "request": {}
+}
