@@ -11,29 +11,33 @@ then the pictures will not load.
 
 **DB schema:**
 
+```
 user table
 car table
 user's cars table
+```
 
 **Local Environment**
 To get the code on your local machine, run the PostgreSQL database script provided your local psql environment.
 
-> /i totalrecall.sql
-> git clone <https://github.com/enrique1451/totalrecall_frontend.git>
-> git clone <https://github.com/enrique1451/totalrecall_backend.git>
+> \i totalrecall.sql
+**Clone GitHub Files**
+> git clone (https://github.com/enrique1451/totalrecall_frontend.git)
+> git clone (https://github.com/enrique1451/totalrecall_backend.git)
 
-To start the frontend react app:
+To start the Frontend React app:
 > cd *local/folder/where/frontend/cloned/git/repositories/were/saved/in/your/local/machine*
 > npm install
 > npm start
 
-To start the backend react app:
+To start the Backend node server:
 > cd *local/folder/where/backend/cloned/git/repositories/were/saved/in/your/local/machine*
 > npm install
 > node server.js
 
 Run the app:
 
-You can now navigate to <http://127.0.0.1:3000/>
+You can now navigate to (http://127.0.0.1:3000/)
+Backend Server Address is (http://127.0.0.1:3001/)
 
 Author Enrique Hoyos
