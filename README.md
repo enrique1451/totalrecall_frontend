@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+**Car Recall Application TotalRecall**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The app has been made for vehicle owners who want to be on top of official complaints and recalls for their particular vehicles. The app allows the owner of the account
+to provide the Year, Make, Model of their vehicles and save them into the account database and retrieve respective vehicle data, recalls and the corresponding date in which the
+recall was submitted or forced by the NHTSA government agency.
 
-## Available Scripts
+**Data**
+The data is provided by the National Highway and Traffic Safety of America (NHTSA) government agency.
+Photos for each vehicle are provided by the Unsplash public API. The API has a limit of 50 pictures per hour, so after this rate is exceeded,
+then the pictures will not load.
 
-In the project directory, you can run:
+**DB schema:**
 
-### `npm start`
+user table
+car table
+user's cars table
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Local Environment**
+To get the code on your local machine, run the PostgreSQL database script provided your local psql environment.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+> /i totalrecall.sql
+> git clone <https://github.com/enrique1451/totalrecall_frontend.git>
+> git clone <https://github.com/enrique1451/totalrecall_backend.git>
 
-### `npm test`
+To start the frontend react app:
+> cd *local/folder/where/frontend/cloned/git/repositories/were/saved/in/your/local/machine*
+> npm install
+> npm start
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To start the backend react app:
+> cd *local/folder/where/backend/cloned/git/repositories/were/saved/in/your/local/machine*
+> npm install
+> node server.js
 
-### `npm run build`
+Run the app:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+You can now navigate to <http://127.0.0.1:3000/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Author Enrique Hoyos
