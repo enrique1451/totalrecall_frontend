@@ -19,11 +19,14 @@ user's cars table
 
 **Local Environment**
 To get the code on your local machine, run the PostgreSQL database script provided your local psql environment.
-
-> \i totalrecall.sql
+``` 
+\i totalrecall.sql
+```
 **Clone GitHub Files**
-> git clone (https://github.com/enrique1451/totalrecall_frontend.git)
-> git clone (https://github.com/enrique1451/totalrecall_backend.git)
+```
+git clone (https://github.com/enrique1451/totalrecall_frontend.git)
+git clone (https://github.com/enrique1451/totalrecall_backend.git)
+```
 
 To start the Frontend React app:
 > cd *local/folder/where/frontend/cloned/git/repositories/were/saved/in/your/local/machine*
