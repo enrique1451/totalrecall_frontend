@@ -1,6 +1,6 @@
 import React from "react";
 import UserContext from "../UserContext";
-import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, NavbarText, NavLink } from "reactstrap";
+import { Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavbarText, NavLink } from "reactstrap";
 
 
 import "./Navigation.css";
@@ -27,19 +27,11 @@ function Navigation({ loggedIn,  handleLogout }) {
    const {userData} = useContext(UserContext)
    console.log({userData})
 
-
-
-
-
-
   const linksIfLoggedIn = (
       <Navbar color="light" expand="md" light fixed="top">
         <NavbarBrand href="/">
           TotalRecall
         </NavbarBrand>
-        {/*
-        <NavbarToggler onClick={function noRefCheck(){}} /> */}
-        <Collapse navbar>
           <Nav className="me-auto" navbar>
             <NavItem>
               <NavLink href="/" onClick={handleLogout}>
@@ -55,7 +47,6 @@ function Navigation({ loggedIn,  handleLogout }) {
           <NavbarText>
             Peace of Mind in One Click
           </NavbarText>
-        </Collapse>
       </Navbar>
   )
 
@@ -66,7 +57,6 @@ function Navigation({ loggedIn,  handleLogout }) {
           TotalRecall
         </NavbarBrand>
         <NavbarToggler onClick={function noRefCheck(){}} />
-        <Collapse navbar>
           <Nav className="me-auto" navbar>
             <NavItem>
               <NavLink href="/login">
@@ -82,7 +72,6 @@ function Navigation({ loggedIn,  handleLogout }) {
           <NavbarText>
             Peace of Mind in One Click
           </NavbarText>
-        </Collapse>
       </Navbar>
 
   )

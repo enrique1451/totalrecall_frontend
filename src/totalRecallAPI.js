@@ -49,8 +49,12 @@ class TotalRecallApi {
       }
   }
 
-  // Individual API routes
-  //  Logs in user by using correct credentials.
+  
+
+
+  /**Individual API routes
+   * Logs in user by using correct credentials.
+   * */
 
   static async login(userData) {
     const res = await this.request("/auth/token", userData, "post");
@@ -62,12 +66,17 @@ class TotalRecallApi {
    * accepts userdata {username, password}
    * returns token string on successful 
    * registration throws error if not successful
-   * */
+   **/
 
   static async registerUser(userData) {
     const res = await this.request(`/auth/register`, userData, "post");
     return res.token;
   }
+
+  /**
+  * Gets current user from database
+  */
+
 
   static async getUser() {
     const res = await this.request(`/users`);
@@ -86,15 +95,9 @@ class TotalRecallApi {
  
   static async getUserCars() {
     const res = await this.request(`/cars/garage/showcars`) 
-    // this.getCarsRecalls()
     return res.cars
   }
 
-  // static async getCarsRecalls(carsData) {
-  //   const res = await this.request("cars/recalls/recallsByVehicle/", carsData, "get");
-
-  //   return res.recalls
-  // }
 
 }
 
