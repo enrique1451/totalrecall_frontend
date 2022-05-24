@@ -16,6 +16,7 @@ import Car from "./Components/CarGarage/Car";
 const Routes = ()=> {
     const [loggedIn, setLoggedIn] = useState(false); 
     const { updateUser } = useContext(UserContext);
+    console.log(useContext(UserContext))
     
     useEffect(() => {
         checkToken();
@@ -37,9 +38,9 @@ const Routes = ()=> {
     async function getCurrentUser() {
         let token = checkToken()
         let jwt = jwtDecode(token);
+        console.log(jwt)
         let currentUser = await TotalRecallApi.getUser(jwt.username);
-        console.debug(currentUser)
-        updateUser(currentUser)
+        updateUser(jwt.username)
         
     }
 

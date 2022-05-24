@@ -25,8 +25,10 @@ function Car() {
   //     setIsLoading(true);
   //     try{
   //       const imageAPI = "https://api.unsplash.com/photos/random"
-  //       const photosData = carsData.forEach( async car => {
-  //         await axios.get(
+
+  //       const photosData = []
+  //       carsData.forEach( async (car, index, cars) => {
+  //         const photoData = await axios.get(
   //           `${imageAPI}`,
   //           {
   //             "headers": {
@@ -37,12 +39,12 @@ function Car() {
   //               "query":  car.carmake +" "+ car.carmodel,
   //               }
   //           })
-  //           setCarsPhotos(photosData)
-  //           console.log(photosData)
+  //           photosData.push(photoData)
+  //           if(index === cars.length-1){
+  //             setCarsPhotos(photosData)
+  //             console.log(photosData)
+  //           }
   //       })
-       
-        
-        
   //       } finally {
   //         setIsLoading(false)
   //       }
@@ -50,9 +52,10 @@ function Car() {
   //     }
   //     getPhotos()
 
-      // }, [carsData])
-
-      
+  //     }, [carsData])
+  
+  
+  console.log(carsData)
   let id = 0;
   const cars = carsData.map(car => <CarCard car={car} key={id++}  />)
   // const photos = carsPhotos.map(photo => <CarCard photo={photo} key={id++} />)
@@ -67,6 +70,7 @@ function Car() {
     <div className = "user-cars">
       <CardGroup className="card-body">
             {cars}
+            {/* {photos} */}
       </CardGroup>
     </div>
       );

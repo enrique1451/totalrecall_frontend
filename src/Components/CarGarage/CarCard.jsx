@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import "./CarCard.css"
 import axios from "axios";
+import React, { useState } from "react";
+import {CardTitle, CardText, Card,  CardImg, CardBody, CardSubtitle, Button, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, Col, Row, Alert} from "reactstrap"
+import TotalRecallApi from "../../totalRecallAPI";
 
-import {CardTitle, CardText, Card,  CardImg, CardBody, CardSubtitle, Button, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, Col, Row} from "reactstrap"
 
 
 
@@ -12,7 +14,6 @@ function CarCard({car}, {photo}) {
   const handleClick = async () => {
       setIsLoading(true);
       try {
-
         const unproxiedURL = "http://localhost:3001/"
         const backendRoute = "recalls/recallsByVehicle/"
         const recallData = await axios.get(
@@ -24,18 +25,24 @@ function CarCard({car}, {photo}) {
               "model": car.carmodel
             }
           });
-        
         setCarsRecallData(recallData.data.results)
-      
       } finally {
         setIsLoading(false);
       };
-      
   };
+
+  const handleCarDelete = async () => {
+    const carDeleteResponse = await TotalRecallApi.removeUserCar({car})
+        
+  }
+
+
+
 
 return (
         <Card key={car.car_id}>
-          <CardImg alt="Card image cap" src={ photo } width="50%" />          
+          {/* <CardImg alt="Card image cap" src={ photo } width="50%" />           */}
+        
          
           <CardBody>
             <CardTitle tag="h5">
@@ -49,13 +56,10 @@ return (
 
             {isLoading &&  <CardText>Loading.... </CardText>}
             {carsRecallData.length > 0 && (
-             
                 carsRecallData.map(recall => {
                   return(
-                    <Col className="bg-light border" sm={{ offset: 1, order: 2, size: 8 }}>
+                    <Col className="bg-light border" sm={{ offset: 2, order: 2, size: 8 }}>
                       <Row>
-                        <CardText>
-
                           <ListGroup>
                             <ListGroupItem active>
                               <ListGroupItemHeading>
@@ -71,17 +75,36 @@ return (
                               </ListGroupItemText>
                             </ListGroupItem>
                           </ListGroup>
-                        </CardText>
-                    </Row>
-                    </Col>
-                    );
+                      </Row>
+                    </Col>);
                     })
-                )}
-            
+                  )}
+
+            {carsRecallData.length < 1 || (
+             <div>
+                <Alert>
+                  <h4 className="alert-heading">
+                   Ooops.....your garage looks empty.
+                  </h4>
+                  <p>
+                    Seems like you don't have any cars in your garage. :( 
+                  </p>
+                  <hr />
+                </Alert>
+              </div>)}
+
+     
+
               
-            <Button onClick={handleClick}>
+            
+            
+          <Button onClick={handleClick}>
               Get Car Recalls
-            </Button>
+          </Button>
+           
+          <Button color="danger" outline className="delete-car" size="sm" onClick={handleCarDelete}>
+            Delete Car
+          </Button>
 
 
           </CardBody>

@@ -1,5 +1,4 @@
 import React from "react";
-import UserContext from "../UserContext";
 import { Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavbarText, NavLink } from "reactstrap";
 
 
@@ -24,8 +23,9 @@ import UserProvider from "../UserProvider";
  */
 function Navigation({ loggedIn,  handleLogout }) {
 
-   const {userData} = useContext(UserContext)
-   console.log({userData})
+   const userData = useContext(UserProvider)
+   console.debug(userData)
+   
 
   const linksIfLoggedIn = (
       <Navbar color="light" expand="md" light fixed="top">
@@ -35,7 +35,7 @@ function Navigation({ loggedIn,  handleLogout }) {
           <Nav className="me-auto" navbar>
             <NavItem>
               <NavLink href="/" onClick={handleLogout}>
-                Logout
+                Logout 
               </NavLink>
             </NavItem>
             <NavItem>

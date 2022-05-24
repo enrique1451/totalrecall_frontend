@@ -24,6 +24,7 @@ class TotalRecallApi {
             url: `${API_URL}${endpoint}`,
             [action === "get" ? "params" : "data"]: parOrData })).data;
             
+            
     } catch (err) {
         console.error("API Error:", err.response);
         let message = err?.response?.data?.message;
@@ -95,6 +96,13 @@ class TotalRecallApi {
  
   static async getUserCars() {
     const res = await this.request(`/cars/garage/showcars`) 
+    return res.cars
+  }
+
+  static async removeUserCar(carData) {
+    const car_id = carData.car_id
+    const res = await this.request(`/cars/garage/showcars`, car_id, "delete")
+    
     return res.cars
   }
 
