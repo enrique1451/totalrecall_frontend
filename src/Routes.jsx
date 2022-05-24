@@ -39,17 +39,17 @@ const Routes = ()=> {
         let token = checkToken()
         let jwt = jwtDecode(token);
         console.log(jwt)
+        // eslint-disable-next-line
         let currentUser = await TotalRecallApi.getUser(jwt.username);
         updateUser(jwt.username)
-        
-    }
+        }
 
 
     async function handleLogin(currentUser) {
         let token = await TotalRecallApi.login(currentUser)
         localStorage.setItem("_token", token);
         setLoggedIn(true);
-    }
+        }
     
       
     const handleLogout = () => {
@@ -67,6 +67,9 @@ const Routes = ()=> {
 
     async function handleNewCar(newCarData) {
         await TotalRecallApi.addNewCar(newCarData);
+        
+
+
     }
 
     async function getCurrentUserCars()  {

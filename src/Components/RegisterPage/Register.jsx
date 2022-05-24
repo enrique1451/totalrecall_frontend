@@ -14,7 +14,9 @@ function Register( { handleRegistration } ) {
     
 
     const [formData, setFormData] = useState(initialFormData);
+    // eslint-disable-next-line
     const [redirect, setRedirect] = useState(false);
+    // eslint-disable-next-line
     const [message, setMessage] = useState(null)
 
     const handleChange = (e) => {

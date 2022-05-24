@@ -1,7 +1,7 @@
 import "./CarCard.css"
 import axios from "axios";
 import React, { useState } from "react";
-import {CardTitle, CardText, Card,  CardImg, CardBody, CardSubtitle, Button, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, Col, Row, Alert} from "reactstrap"
+import {CardTitle, CardText, Card, CardBody, CardSubtitle, Button, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, Col, Row} from "reactstrap"
 import TotalRecallApi from "../../totalRecallAPI";
 
 
@@ -9,6 +9,7 @@ import TotalRecallApi from "../../totalRecallAPI";
 
 function CarCard({car}, {photo}) {
   const [carsRecallData, setCarsRecallData] = useState([])
+  const [carsDeleteRes, setCarsDeleteRes] = useState(null)
   const [isLoading, setIsLoading] = useState(false);
   
   const handleClick = async () => {
@@ -32,16 +33,22 @@ function CarCard({car}, {photo}) {
   };
 
   const handleCarDelete = async () => {
-    const carDeleteResponse = await TotalRecallApi.removeUserCar({car})
-        
+    setIsLoading(true);
+    // eslint-disable-next-line
+    try {
+      const carDeleteResponse = await TotalRecallApi.removeUserCar({car})
+      setCarsDeleteRes(carDeleteResponse)
+    } finally {
+      setIsLoading(false)
+      }
   }
+  console.log(carsDeleteRes)
 
 
 
 
 return (
         <Card key={car.car_id}>
-          {/* <CardImg alt="Card image cap" src={ photo } width="50%" />           */}
         
          
           <CardBody>
@@ -80,19 +87,7 @@ return (
                     })
                   )}
 
-            {carsRecallData.length < 1 || (
-             <div>
-                <Alert>
-                  <h4 className="alert-heading">
-                   Ooops.....your garage looks empty.
-                  </h4>
-                  <p>
-                    Seems like you don't have any cars in your garage. :( 
-                  </p>
-                  <hr />
-                </Alert>
-              </div>)}
-
+            
      
 
               

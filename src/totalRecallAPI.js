@@ -100,8 +100,8 @@ class TotalRecallApi {
   }
 
   static async removeUserCar(carData) {
-    const car_id = carData.car_id
-    const res = await this.request(`/cars/garage/showcars`, car_id, "delete")
+
+    const res = await this.request(`/cars/garage/showcars`, carData, "delete")
     
     return res.cars
   }
