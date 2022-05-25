@@ -11,13 +11,11 @@ function NewCarForm({ handleNewCar }) {
 
     }
 
-    
     const [formData, setFormData] = useState(initialFormData);
-    // eslint-disable-next-line
-    const [redirect, setRedirect] = useState(false);
     // eslint-disable-next-line
     const [message, setMessage] = useState(null)
 
+   
     
     const handleChange = (e) => {
         const {name, value} = e.target; 
@@ -28,22 +26,16 @@ function NewCarForm({ handleNewCar }) {
     };
 
 
-
-
-
-    async function handleSubmit(e) {
+     async function handleSubmit(e) {
+        
         e.preventDefault();
         console.log("Check out state ->", formData)
         try {
             await handleNewCar(formData);
-            setRedirect(true);
         } catch (e) {
             setMessage(e)
         }
     }
-
-
-
 
 
 return(
@@ -64,7 +56,6 @@ return(
                         onChange={handleChange} value = {formData.make} />
                     <Input id="carmodel" name="carmodel" placeholder="Car Model" type="text" 
                         onChange={handleChange} value = {formData.model} />
-
                 </FormGroup>
                 </Col>
                 <Button variant="primary" type="submit" onSubmit={handleSubmit}>

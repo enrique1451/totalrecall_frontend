@@ -4,7 +4,8 @@ import { Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavbarText, NavLink }
 
 import "./Navigation.css";
 import { useContext } from "react";
-import UserProvider from "../UserProvider";
+import UserContext from "../UserContext";
+
 
 
 /** Component for navigating
@@ -16,15 +17,13 @@ import UserProvider from "../UserProvider";
  * - none
  * 
  * Context:
- * - userData - an object like { username, fullname, email, isAdmin}
-
+ * - userData - an object like { username}
  *
- 
- */
+*/
 function Navigation({ loggedIn,  handleLogout }) {
 
-   const userData = useContext(UserProvider)
-   console.debug(userData)
+   const userData = useContext(UserContext)
+ 
    
 
   const linksIfLoggedIn = (
@@ -34,13 +33,13 @@ function Navigation({ loggedIn,  handleLogout }) {
         </NavbarBrand>
           <Nav className="me-auto" navbar>
             <NavItem>
-              <NavLink href="/" onClick={handleLogout}>
-                Logout 
-              </NavLink>
+              <NavLink  href="/" onClick={handleLogout}>
+                Logout {`${userData.user}`}
+             </NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="/garage/showcars">
-                Parking Garage
+                Garage
               </NavLink>
             </NavItem>
           </Nav>
@@ -52,7 +51,7 @@ function Navigation({ loggedIn,  handleLogout }) {
 
 
   const linksIfLoggedOut = (
-      <Navbar color="light" expand="md" light>
+      <Navbar color="light" expand="md">
         <NavbarBrand href="/">
           TotalRecall
         </NavbarBrand>

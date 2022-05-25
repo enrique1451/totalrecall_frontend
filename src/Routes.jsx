@@ -100,7 +100,8 @@ const Routes = ()=> {
                 </Route>
 
                 <Route exact path="/garage">
-                    {loggedIn ? <NewCarForm handleNewCar = { handleNewCar }/>:<Redirect to="/login"/>}                
+                    {loggedIn ? <NewCarForm handleNewCar = { handleNewCar }/>:<Redirect to="/login"/>} 
+                              
                 </Route>
 
                 <Route exact path="/garage/showcars">

@@ -13,21 +13,16 @@ const Login = ({ handleLogin }) => {
     }
 
   const [formData, setFormData] = useState(initialFormData);
-  const [redirect, setRedirect] = useState(false);
   const [message, setMessage] = useState(null)
 
 
   console.log(
     "* Login =--->",
     formData,
-    redirect,
     message) 
 
-    
 
-    
-
-  const handleChange = (e) => {
+ const handleChange = (e) => {
     const {
       name,
       value
@@ -43,7 +38,6 @@ const Login = ({ handleLogin }) => {
     try {
       await handleLogin(formData);
 
-      setRedirect(true);
     } catch (e) {
       setMessage(e)
 
