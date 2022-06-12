@@ -77,39 +77,31 @@ class TotalRecallApi {
   /**
   * Gets current user from database
   */
-
-
   static async getUser() {
     const res = await this.request(`/users`);
     return res.user;
   }
 
   /** Adds cars into database
-   * accepts {Year Model, Car Make,  Car Model}
+   * accepts {Year Model, Car Make, Car Model}
    * throws error if not successful
    * */  
 
   static async addNewCar(newCarData) {
-    const res = await this.request(`/cars/garage`, newCarData, "post")
-    return res.user;
+    const res = await this.request("/cars/garage/showcars", newCarData, "post")
+    return res.addedCar;
   }
  
   static async getUserCars() {
-    const res = await this.request(`/cars/garage/showcars`) 
+    const res = await this.request("/cars/garage/showcars") 
     return res.cars
   }
 
   static async removeUserCar(carData) {
-
     const res = await this.request(`/cars/garage/showcars`, carData, "delete")
-    
-    return res.cars
+    return res.carDeleted
   }
-
-
 }
-
-
 
 export default TotalRecallApi;
 

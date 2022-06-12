@@ -23,24 +23,20 @@ const Login = ({ handleLogin }) => {
 
 
  const handleChange = (e) => {
-    const {
-      name,
-      value
-    } = e.target;
+    const {name, value} = e.target;
     setFormData(fData => ({
       ...fData,
       [name]: value,
     }));
+
   };
 
   async function handleSubmit(e) {
     e.preventDefault();
     try {
       await handleLogin(formData);
-
-    } catch (e) {
-      setMessage(e)
-
+    } catch (err) {
+      setMessage(err)
     }
   }
 

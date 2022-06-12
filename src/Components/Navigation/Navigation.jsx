@@ -9,16 +9,6 @@ import UserContext from "../UserContext";
 
 
 /** Component for navigating
- *
- * Props:
- * - handleLogout = function run on parent
- *
- * State:
- * - none
- * 
- * Context:
- * - userData - an object like { username}
- *
 */
 function Navigation({ loggedIn,  handleLogout }) {
 
@@ -27,8 +17,8 @@ function Navigation({ loggedIn,  handleLogout }) {
    
 
   const linksIfLoggedIn = (
-      <Navbar color="light" expand="md" light fixed="top">
-        <NavbarBrand href="/">
+      <Navbar color="light" expand="md" light fixed="top" className="lh-1">
+        <NavbarBrand href="/" className="h1">
           TotalRecall
         </NavbarBrand>
           <Nav className="me-auto" navbar>
@@ -39,7 +29,7 @@ function Navigation({ loggedIn,  handleLogout }) {
             </NavItem>
             <NavItem>
               <NavLink href="/garage/showcars">
-                Garage
+              {`${userData.user}'s`} Cars
               </NavLink>
             </NavItem>
           </Nav>
@@ -51,7 +41,7 @@ function Navigation({ loggedIn,  handleLogout }) {
 
 
   const linksIfLoggedOut = (
-      <Navbar color="light" expand="md">
+      <Navbar color="light" expand="md" light fixed="top" className="lh-1">
         <NavbarBrand href="/">
           TotalRecall
         </NavbarBrand>
@@ -82,9 +72,5 @@ function Navigation({ loggedIn,  handleLogout }) {
 
   )
 }
-
-
-  
-
 
 export default Navigation;

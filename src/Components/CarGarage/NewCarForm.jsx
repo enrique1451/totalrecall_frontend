@@ -1,21 +1,22 @@
-import "./NewCarForm.css"
+import "./css/NewCarForm.css"
 import React, { useState } from 'react';
 import {Form, Row, FormGroup, Label, Button, Input, Col} from "reactstrap"
+import Notifications from "../Notifications/Notifications";
 
 function NewCarForm({ handleNewCar }) {
+
+
 
     const initialFormData = {
         yearmodel: 1950,
         carmake : "",
         carmodel: "" 
-
     }
 
     const [formData, setFormData] = useState(initialFormData);
-    // eslint-disable-next-line
-    const [message, setMessage] = useState(null)
+    const [success, setSuccess] = useState(false);
+    const [error, setError] = useState(false);
 
-   
     
     const handleChange = (e) => {
         const {name, value} = e.target; 
@@ -24,28 +25,29 @@ function NewCarForm({ handleNewCar }) {
             [name]: value, 
         }));
     };
+    
 
 
-     async function handleSubmit(e) {
-        
+     async function handleSubmit(e) {        
         e.preventDefault();
         console.log("Check out state ->", formData)
         try {
             await handleNewCar(formData);
-        } catch (e) {
-            setMessage(e)
+            setSuccess(true)
+      
+        } catch (error) {
+            setError(true)            
         }
+        
     }
+    
 
 
 return(
-    <div>
-    
+    <div className="form">
+        {success && <Notifications type="success" message="New Car Added to the Database"/>} 
+        {error && <Notifications type="danger" message="An Error Ocurred while Adding New Car to the Database"/>} 
         <Form onSubmit={handleSubmit}>
-            <br></br>
-            <br></br>
-            <br></br>
-            
             <Row form>
                 <Col md={3}>
                 <FormGroup className="userData">
@@ -64,6 +66,7 @@ return(
             </Row>
         </Form>
     </div>
+    
 
 )}
 export default NewCarForm; 

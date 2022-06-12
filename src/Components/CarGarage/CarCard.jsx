@@ -1,16 +1,17 @@
-import "./CarCard.css"
+import "./css/CarCard.css"
 import axios from "axios";
 import React, { useState } from "react";
 import {CardTitle, CardText, Card, CardBody, CardSubtitle, Button, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, Col, Row} from "reactstrap"
 import TotalRecallApi from "../../totalRecallAPI";
+import Notifications from "../Notifications/Notifications";
 
 
+function CarCard({car}) {
 
-
-function CarCard({car}, {photo}) {
   const [carsRecallData, setCarsRecallData] = useState([])
-  const [carsDeleteRes, setCarsDeleteRes] = useState(null)
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
+  
   
   const handleClick = async () => {
       setIsLoading(true);
@@ -34,29 +35,32 @@ function CarCard({car}, {photo}) {
 
   const handleCarDelete = async () => {
     setIsLoading(true);
-    // eslint-disable-next-line
+
     try {
-      const carDeleteResponse = await TotalRecallApi.removeUserCar({car})
-      setCarsDeleteRes(carDeleteResponse)
+      await TotalRecallApi.removeUserCar({car})
+
+    } catch (error) {
+      setError(true)
+
     } finally {
       setIsLoading(false)
       }
   }
-  console.log(carsDeleteRes)
 
+  
 
-
-
-return (
-        <Card key={car.car_id}>
-        
-         
+  return (
+    <div>
+    {error && <Notifications type="danger" message="There was an Error While Deleting the Car from the Database"/>} 
+      <Row >
+        <Col md={12}>
+          <Card key={car.car_id}> 
           <CardBody>
             <CardTitle tag="h5">
               {car.yearmodel}
             </CardTitle>
             <CardSubtitle className="mb-2 text-muted" tag="h6">
-              { car.carmake } { car.carmodel }
+              { (car.carmake).toUpperCase() } { (car.carmodel).toUpperCase() }
             </CardSubtitle>
 
 
@@ -86,24 +90,21 @@ return (
                     </Col>);
                     })
                   )}
-
             
-     
-
-              
-            
-            
-          <Button onClick={handleClick}>
+          <Button className="text-wrap" onClick={handleClick} size="sm">
               Get Car Recalls
           </Button>
-           
+
           <Button color="danger" outline className="delete-car" size="sm" onClick={handleCarDelete}>
             Delete Car
           </Button>
-
-
+          
           </CardBody>
         </Card>
+        </Col>
+
+        </Row>
+        </div>
 
 
 );

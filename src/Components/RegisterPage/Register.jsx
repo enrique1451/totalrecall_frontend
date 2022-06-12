@@ -37,7 +37,6 @@ function Register( { handleRegistration } ) {
             await handleRegistration(formData);
             setRedirect(true);
         } catch (e) {
-             
             setMessage(e)
         }
     }
