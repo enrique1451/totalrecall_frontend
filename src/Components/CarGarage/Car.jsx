@@ -7,22 +7,25 @@ import "./css/Car.css"
 
 
 
+
 function Car({handleNewCar}) {
   const [carsData, setCarsData] = useState([]);
-
-
-
+  const carObject = [...carsData]
+  
+ 
   useEffect(() => {
+        
     const getCars = async () => {
           const carsResponse = await TotalRecallApi.getUserCars();
           setCarsData(carsResponse)
          }
-     getCars()    
-  }, []);
+     getCars()
+   
+  }, [carObject.car_id]);
   
   
-    
-  const cars = carsData.map(car => <CarCard car={car} key={carsData.car_id}  />)
+  
+  const cars = carsData.map(car => <CarCard car={car} key={car.car_id}  />)
  
   return (
     <Container>
@@ -32,12 +35,12 @@ function Car({handleNewCar}) {
 
       <div className = "user-cars split2 right">
       <CardGroup className="card-body">
-            {cars}
+            { cars }
       </CardGroup>
 
       {cars.length < 1 && (
         <div>
-          <Col className="bg" sm={{ offset: 2, order: 2, size: 8 }}>
+          <Col className="bg" sm={{ offset: 1, order: 2, size: 8 }}>
           <Alert color="info" >
             <h4 className="alert-heading">
               CAR GARAGE IS EMPTY.
@@ -50,9 +53,10 @@ function Car({handleNewCar}) {
           </Col>
         </div>
         )
-      }
+      }      
     </div>
     </Container>
+    
       );
     }
   export default Car;

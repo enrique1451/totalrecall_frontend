@@ -16,6 +16,12 @@ import Notifications from "./Components/Notifications/Notifications";
 
 const Routes = ()=> {
     const [loggedIn, setLoggedIn] = useState(false);
+    const [message, setMessage] = useState("")
+    const [error, setError] = useState(false)
+    const [success, setSuccess] = useState(false)
+    const [color, setColor] = useState(null)
+   
+
     const { updateUser } = useContext(UserContext);
     console.log(useContext(UserContext))
     
@@ -36,20 +42,35 @@ const Routes = ()=> {
     }
 
 
-    async function getCurrentUser() {
+    async function getCurrentUser() {   
         let token = checkToken()
         let jwt = jwtDecode(token);
         console.log(jwt)
-        // eslint-disable-next-line
         await TotalRecallApi.getUser(jwt.username);
         updateUser(jwt.username)
         }
 
 
     async function handleLogin(currentUser) {
-        let token = await TotalRecallApi.login(currentUser)
-        localStorage.setItem("_token", token);
-        setLoggedIn(true);
+
+        try{
+            let token = await TotalRecallApi.login(currentUser)
+            localStorage.setItem("_token", token);
+            setLoggedIn(true);
+            setSuccess(true)
+            setColor("success")
+
+            setMessage("Welcome to TotalRecall")
+            
+            } catch(error) {
+                setError(true)
+                setColor("danger")
+                setMessage("Check your Username and Password")
+
+        }
+
+
+        
         }
     
       
@@ -67,8 +88,17 @@ const Routes = ()=> {
 
 
     async function handleNewCar(newCarData) {
-        let newCarAdded = await TotalRecallApi.addNewCar(newCarData);
-        console.log(newCarAdded)
+        try {
+            let newCarAdded = await TotalRecallApi.addNewCar(newCarData);
+            console.log(newCarAdded)
+            setSuccess(true)
+            setMessage(`New Car ${newCarData.yearmodel}  ${newCarData.carmake}  ${newCarData.carmodel} Added `)
+
+
+            } catch (error) {
+                setError(true)
+                setMessage("Error with New Car Submission")
+            }
         
     }
 
@@ -86,23 +116,27 @@ const Routes = ()=> {
         <BrowserRouter>
             <Navigation loggedIn = {loggedIn} handleLogout={handleLogout}/>
             <div className="main"> 
-            <Switch>
-                <Route exact path="/">
-                    <Redirect to="/register" />
-                </Route>
-                <Route exact path = "/register">
-                    {!loggedIn ? <Register handleRegistration = {handleRegistration} /> : <Redirect to="/garage/showcars"/> }
-                </Route>
-                <Route exact path="/login">
-                    {!loggedIn ?  <Login handleLogin = {handleLogin} handleLogout = {handleLogout} /> : <Redirect to="/garage/showcars" />}
-                </Route>
-               
-                <Route exact path="/garage/showcars">
-                    {<Car getCurrentUserCars = { getCurrentUserCars } handleNewCar = {handleNewCar}/>} 
-                </Route>
-
-            </Switch> 
+                <Switch>
+                    <Route exact path="/">
+                        <Redirect to="/register" />
+                    </Route>
+                    <Route exact path = "/register">
+                        {!loggedIn ? <Register handleRegistration = {handleRegistration} /> : <Redirect to="/garage/showcars"/> }
+                    </Route>
+                    <Route exact path="/login">
+                        {!loggedIn ?  <Login handleLogin = {handleLogin} handleLogout = {handleLogout} /> : <Redirect to="/garage/showcars" />}
+                    </Route>
+                
+                    <Route exact path="/garage/showcars">
+                        { <Car getCurrentUserCars = { getCurrentUserCars } handleNewCar = { handleNewCar }/> } 
+                    </Route>
+                </Switch> 
             </div>
+            <div>
+                {success && <Notifications color={success} message={message}/>}
+                {error && <Notifications color={error} message={message}/>}
+             </div>
+
         </BrowserRouter>
     )
 }

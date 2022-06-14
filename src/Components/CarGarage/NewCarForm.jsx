@@ -1,12 +1,8 @@
 import "./css/NewCarForm.css"
 import React, { useState } from 'react';
 import {Form, Row, FormGroup, Label, Button, Input, Col} from "reactstrap"
-import Notifications from "../Notifications/Notifications";
 
 function NewCarForm({ handleNewCar }) {
-
-
-
     const initialFormData = {
         yearmodel: 1950,
         carmake : "",
@@ -14,8 +10,6 @@ function NewCarForm({ handleNewCar }) {
     }
 
     const [formData, setFormData] = useState(initialFormData);
-    const [success, setSuccess] = useState(false);
-    const [error, setError] = useState(false);
 
     
     const handleChange = (e) => {
@@ -25,29 +19,20 @@ function NewCarForm({ handleNewCar }) {
             [name]: value, 
         }));
     };
-    
+
 
 
      async function handleSubmit(e) {        
         e.preventDefault();
         console.log("Check out state ->", formData)
-        try {
-            await handleNewCar(formData);
-            setSuccess(true)
-      
-        } catch (error) {
-            setError(true)            
-        }
-        
+        await handleNewCar(formData);
     }
     
 
 
 return(
     <div className="form">
-        {success && <Notifications type="success" message="New Car Added to the Database"/>} 
-        {error && <Notifications type="danger" message="An Error Ocurred while Adding New Car to the Database"/>} 
-        <Form onSubmit={handleSubmit}>
+         <Form onSubmit={handleSubmit}>
             <Row form>
                 <Col md={3}>
                 <FormGroup className="userData">

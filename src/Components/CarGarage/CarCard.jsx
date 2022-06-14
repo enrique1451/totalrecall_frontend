@@ -51,7 +51,7 @@ function CarCard({car}) {
 
   return (
     <div>
-    {error && <Notifications type="danger" message="There was an Error While Deleting the Car from the Database"/>} 
+    {error && <Notifications type="danger" message="Error Deleting Car from Database"/>} 
       <Row >
         <Col md={12}>
           <Card key={car.car_id}> 
