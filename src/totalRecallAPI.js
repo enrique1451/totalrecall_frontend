@@ -1,7 +1,4 @@
 import axios from "axios";
-
-
-
 const API_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
 
@@ -9,10 +6,10 @@ class TotalRecallApi {
 
   static async request(endpoint, parOrData = {}, action = "get") {
     parOrData._token = localStorage.getItem("_token");
-    console.debug("API Call: Endpoint:", endpoint);
-    console.debug("endpoint", endpoint)
-    console.debug('parOrData', parOrData)
-    console.debug("method", action)
+    // console.debug("API Call: Endpoint:", endpoint);
+    // console.debug("endpoint", endpoint)
+    // console.debug('parOrData', parOrData)
+    // console.debug("method", action)
 
     if (endpoint !== "/recalls/recallsByVehicle/") {
       try {
@@ -26,9 +23,9 @@ class TotalRecallApi {
             
             
     } catch (err) {
-        console.error("API Error:", err.response);
+        // console.error("API Error:", err.response);
         let message = err?.response?.data?.message;
-        console.debug(err, message)
+        // console.debug(err, message)
         throw Array.isArray(message) ? message : [message];
     } 
     
@@ -41,9 +38,9 @@ class TotalRecallApi {
         query: parOrData })).data;
         
       } catch (err) {
-          console.error("API Error:", err.response);
+          // console.error("API Error:", err.response);
           let message = err?.response?.data?.message;
-          console.debug(err, message)
+          // console.debug(err, message)
           throw Array.isArray(message) ? message : [message];
         } 
          
@@ -55,7 +52,7 @@ class TotalRecallApi {
 
   /**Individual API routes
    * Logs in user by using correct credentials.
-   * */
+   **/
 
   static async login(userData) {
     const res = await this.request("/auth/token", userData, "post");
@@ -74,29 +71,38 @@ class TotalRecallApi {
     return res.token;
   }
 
-  /**
-  * Gets current user from database
-  */
+/* 
+ * Gets current user from database
+ */
   static async getUser() {
     const res = await this.request(`/users`);
     return res.user;
   }
 
-  /** Adds cars into database
-   * accepts {Year Model, Car Make, Car Model}
-   * throws error if not successful
-   * */  
+/** Adds cars into database
+ * accepts {Year Model, Car Make, Car Model}
+ * throws error if not successful
+ **/  
 
   static async addNewCar(newCarData) {
     const res = await this.request("/cars/garage/showcars", newCarData, "post")
     return res.addedCar;
   }
+
+/** Get cars from database based on logged in
+ * user throws error if not successful
+ * 
+**/  
  
   static async getUserCars() {
     const res = await this.request("/cars/garage/showcars") 
     return res.cars
   }
 
+/** Delete car from database
+ * user throws error if not successful
+ **/  
+ 
   static async removeUserCar(carData) {
     const res = await this.request(`/cars/garage/showcars`, carData, "delete")
     return res.carDeleted

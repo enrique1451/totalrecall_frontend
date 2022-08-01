@@ -1,14 +1,32 @@
-.card-group {
-  margin-top: 60px;
-  margin-left: 13%;
-  margin-right: 13%;
-}
+
+
 
 .alert {
   width: 450px;
-  margin-left: 20%;
-  margin-right: 20%
+  height: 145px;
+  margin-left: 29%;
+  margin-right: 2%;
+  margin-top: 1%;
 }
+
+.alert-heading {
+  text-align: center;  
+}
+.alert-legend {
+  text-align: center;  
+}
+
+.alert-sublegend {
+  text-align: center;
+  font: 15px Arial, sans-serif;
+  font-weight: bold
+}
+
+.list-group-item.active {
+  background-color: none;
+}
+
+
 
 
 

@@ -14,12 +14,10 @@ import Notifications from "./Components/Notifications/Notifications";
 
 
 
-const Routes = ()=> {
+const Routes = () => {
     const [loggedIn, setLoggedIn] = useState(false);
     const [message, setMessage] = useState("")
-    const [error, setError] = useState(false)
-    const [success, setSuccess] = useState(false)
-    const [color, setColor] = useState(null)
+    const [notifType, setNotifType] = useState("")
    
 
     const { updateUser } = useContext(UserContext);
@@ -38,84 +36,86 @@ const Routes = ()=> {
         let token = localStorage.getItem("_token");
         setLoggedIn(token ? true: false);
         return token;
+        }
 
-    }
 
-
-    async function getCurrentUser() {   
+    const getCurrentUser =  async() => {   
         let token = checkToken()
         let jwt = jwtDecode(token);
-        console.log(jwt)
         await TotalRecallApi.getUser(jwt.username);
         updateUser(jwt.username)
         }
 
 
-    async function handleLogin(currentUser) {
-
+    const handleLogin = async(currentUser) => {
         try{
             let token = await TotalRecallApi.login(currentUser)
             localStorage.setItem("_token", token);
             setLoggedIn(true);
-            setSuccess(true)
-            setColor("success")
-
-            setMessage("Welcome to TotalRecall")
+            setNotifType("success");
+            setMessage(`Welcome to TotalRecall ${currentUser.username}`)
             
-            } catch(error) {
-                setError(true)
-                setColor("danger")
-                setMessage("Check your Username and Password")
-
-        }
-
-
-        
-        }
+        } catch(error) {
+            setNotifType("error")
+            setMessage("Check your Username and Password")
+            }
+        }   
     
       
     const handleLogout = () => {
-        localStorage.removeItem("_token");
-        setLoggedIn(false);
-        updateUser(null);
-    }
+        try{
+            localStorage.removeItem("_token");
+            setLoggedIn(false);
+            updateUser(null);
+            setNotifType("success");
+            setMessage("Bye. Come Again")
+    
 
-    async function handleRegistration(newUser) {
+        } catch (error){
+            setNotifType("error")
+            setMessage("Error login you out. Try again")
+            } finally {
+                setNotifType(null)
+            }
+        }
+
+    const handleRegistration = async(newUser) => {
         let token = await TotalRecallApi.registerUser(newUser); 
         localStorage.setItem("_token", token);
         setLoggedIn(true);
-    }
+        }
 
 
-    async function handleNewCar(newCarData) {
+    const handleNewCar = async(newCarData) => {
         try {
-            let newCarAdded = await TotalRecallApi.addNewCar(newCarData);
-            console.log(newCarAdded)
-            setSuccess(true)
+            await TotalRecallApi.addNewCar(newCarData);
+            setNotifType("success");
             setMessage(`New Car ${newCarData.yearmodel}  ${newCarData.carmake}  ${newCarData.carmodel} Added `)
 
-
             } catch (error) {
-                setError(true)
+                setNotifType("error");
                 setMessage("Error with New Car Submission")
-            }
-        
+            } finally {
+                setNotifType(null)
+                }
+     }
+     
+    const getCurrentUserCars = async() =>  {
+       let username = jwtDecode(checkToken()).username
+       await TotalRecallApi.getUserCars(username)
     }
 
-    async function getCurrentUserCars()  {
-        let token = checkToken()
-        let jwt = jwtDecode(token)
-        let username = jwt.username
-        console.log(username)
-        
-        await TotalRecallApi.getUserCars(username)
-    }
+
+
     
     
     return(
         <BrowserRouter>
             <Navigation loggedIn = {loggedIn} handleLogout={handleLogout}/>
             <div className="main"> 
+            <div>
+                { notifType!== "" && <Notifications type={notifType} message={message}/> }
+            </div>
                 <Switch>
                     <Route exact path="/">
                         <Redirect to="/register" />
@@ -128,16 +128,12 @@ const Routes = ()=> {
                     </Route>
                 
                     <Route exact path="/garage/showcars">
-                        { <Car getCurrentUserCars = { getCurrentUserCars } handleNewCar = { handleNewCar }/> } 
+                        { <Car getCurrentUserCars = { getCurrentUserCars } handleNewCar = { handleNewCar } /> } 
                     </Route>
                 </Switch> 
             </div>
-            <div>
-                {success && <Notifications color={success} message={message}/>}
-                {error && <Notifications color={error} message={message}/>}
-             </div>
 
         </BrowserRouter>
-    )
+        )
 }
 export default Routes; 

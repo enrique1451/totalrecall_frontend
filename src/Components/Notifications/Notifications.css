@@ -3,11 +3,20 @@
     
 }
 
-.alert {
-  width: auto; 
-  margin-left: 34%; 
-  z-index: 1;
-  
+.notification {
+  width: fit-content;
+  height:fit-content; 
+  margin-left: 45%;
+  margin-top: 0%; 
+  z-index: 2;
+}
+
+.error {
+  background-color: #E76B73;
+}
+
+.success {
+  background-color: #68AA85;
 }
 
 

@@ -28,4 +28,5 @@ yarn-error.log*
 /src/hooks/WebAPICalls.jsx
 /totalrecall_backend/node_modules
 /totalrecall_backend/seed.py
+/src/Components/Modal.jsx
 

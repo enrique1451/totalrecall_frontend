@@ -4,7 +4,7 @@ import {Form, Row, FormGroup, Label, Button, Input, Col} from "reactstrap"
 
 function NewCarForm({ handleNewCar }) {
     const initialFormData = {
-        yearmodel: 1950,
+        yearmodel: Number(1950),
         carmake : "",
         carmodel: "" 
     }
@@ -22,11 +22,14 @@ function NewCarForm({ handleNewCar }) {
 
 
 
-     async function handleSubmit(e) {        
-        e.preventDefault();
-        console.log("Check out state ->", formData)
-        await handleNewCar(formData);
-    }
+     async function handleSubmit(e) {
+        try{
+            e.preventDefault();
+            await  handleNewCar(formData);
+            } finally {
+                setFormData({yearmodel: Number(1950), carmake:"", carmodel:""})
+                }
+            }
     
 
 
