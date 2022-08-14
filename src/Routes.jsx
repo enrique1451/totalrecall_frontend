@@ -106,9 +106,6 @@ const Routes = () => {
     }
 
 
-
-    
-    
     return(
         <BrowserRouter>
             <Navigation loggedIn = {loggedIn} handleLogout={handleLogout}/>

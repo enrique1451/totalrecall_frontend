@@ -3,14 +3,15 @@ import axios from "axios";
 import React, { useState } from "react";
 import {CardTitle, Card, CardBody, CardSubtitle, Button, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, Col, Row, Spinner} from "reactstrap"
 import TotalRecallApi from "../../totalRecallAPI";
-import Notifications from "../Notifications/Notifications";
 
 
 function CarCard({car}) {
 
   const [carsRecallData, setCarsRecallData] = useState([])
   const [isLoading, setIsLoading] = useState(false);
+  // eslint-disable-next-line
   const [message, setMessage] = useState("");
+  // eslint-disable-next-line
   const [type, setType] = useState(null);
 
   
@@ -23,9 +24,9 @@ function CarCard({car}) {
           `${unproxiedURL}${backendRoute}`,
           {
             "params":{
-              "modelYear":car.yearmodel,
               "make": car.carmake,
-              "model": car.carmodel
+              "model": car.carmodel,
+              "modelYear":car.yearmodel
             }
           });
         setCarsRecallData(recallData.data.results)
@@ -48,7 +49,7 @@ function CarCard({car}) {
             setMessage("Deletion Error");
         } finally {
           setIsLoading(false)
-          setType(null);
+          setType("");
     }
 
   }
@@ -97,8 +98,7 @@ function CarCard({car}) {
               </ListGroup>
             </Row>
             </Col>);
-            })
-            )}
+            }))}
             <Button className="text-wrap" onClick={handleClick} size="sm">
               Get Car Recalls
             </Button>

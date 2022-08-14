@@ -20,31 +20,29 @@ class TotalRecallApi {
             },
             url: `${API_URL}${endpoint}`,
             [action === "get" ? "params" : "data"]: parOrData })).data;
-            
-            
-    } catch (err) {
-        // console.error("API Error:", err.response);
+
+      } catch (err) {
+        console.error("API Error:", err.response);
         let message = err?.response?.data?.message;
         // console.debug(err, message)
         throw Array.isArray(message) ? message : [message];
     } 
     
-  } else  {
-    
-    try {
-      return (await axios({
-        method: 'get',
-        url: `${API_URL}${endpoint}`,
-        query: parOrData })).data;
-        
-      } catch (err) {
-          // console.error("API Error:", err.response);
-          let message = err?.response?.data?.message;
-          // console.debug(err, message)
-          throw Array.isArray(message) ? message : [message];
-        } 
-         
-      }
+      } else  {
+          try {
+            return (await axios({
+              method: 'get',
+              url: `${API_URL}${endpoint}`,
+              query: parOrData })).data;
+              
+            } catch (err) {
+                // console.error("API Error:", err.response);
+                let message = err?.response?.data?.message;
+                // console.debug(err, message)
+                throw Array.isArray(message) ? message : [message];
+              } 
+              
+            }
   }
 
   

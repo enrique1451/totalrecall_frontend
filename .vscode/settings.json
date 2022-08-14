@@ -1,0 +1,15 @@
+{
+  "files.exclude": {
+    "src/reportWebVitals.jsx": true,
+    "src/setupTests.jsx": true,
+    "src/App.test.jsx": true,
+    "src/hooks/useQuery.jsx": true,
+    "src/Components/CarGarage/CarCopy_dont_use.jsx": true,
+    "src/Components/ModalsForInfo.jsx": true,
+    "NHTSA Sample Response.json": true,
+    "Unsplash Sample Response.json": true,
+    "Procfile": true,
+    "node_modules": true,
+    "src/hooks/UseLocalStorage.jsx": true
+  }
+}
