@@ -8,7 +8,7 @@ function NewCarForm({ handleNewCar }) {
 
     // const [formData, setFormData] = useState(initialFormData);
 
-    //Dropdown implementation attempt
+    //Dropdown menus implementation 
     // eslint-disable-next-line
     const [inputValue, setValue] = useState('')
     const [selectedYear, setSelectedYear] = useState("")
@@ -20,6 +20,15 @@ function NewCarForm({ handleNewCar }) {
     const handleInputChange = value => {
         setValue(value); 
     };
+
+        // const handleChange = (e) => {
+    //     const {name, value} = e.target; 
+    //     setFormData(fData => ({
+    //         ...fData, 
+    //         [name]: value, 
+    //     }));
+    // };
+
 
     
     const handleYearChange = value => {
@@ -75,7 +84,6 @@ function NewCarForm({ handleNewCar }) {
    
             })
         const res = model.data.results
-        console.log(res)
         return res; 
     }
 
@@ -85,13 +93,6 @@ function NewCarForm({ handleNewCar }) {
         "carmodel": selectedModel.model
     }
 
-    // const handleChange = (e) => {
-    //     const {name, value} = e.target; 
-    //     setFormData(fData => ({
-    //         ...fData, 
-    //         [name]: value, 
-    //     }));
-    // };
 
 
      async function handleSubmit(e) {
@@ -105,6 +106,7 @@ function NewCarForm({ handleNewCar }) {
 
 
 return(
+    
     <div className="form">
         <Form onSubmit={handleSubmit}>
             <AsyncSelect cacheOptions={true} defaultOptions value={selectedYear} getOptionLabel={y => y.modelYear}  getOptionValue={y => y.id} loadOptions={fetchYear} onInputChange={handleInputChange} onChange={handleYearChange}/>
